@@ -1,0 +1,29 @@
+{
+    "Actor": {},
+    "Item": {
+        "types": [
+            "equipment"
+        ],
+        "templates": {
+            "base": {
+                "description": "Lorem ipsum dolor sit amet"
+            }
+        },
+        "equipment": {
+            "templates": [
+                "base"
+            ],
+            "equip": {
+                "hand": true,
+                "helmet": false,
+                "body": false,
+                "arms": false,
+                "gloves": false,
+                "legs": false,
+                "boots": false,
+                "belt": true
+            },
+            "size": 1
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "foundryvtt-fire-sword-and-sorcery",
+    "title": "Fire, Sword and Sorcery",
+    "description": "A system for playing Fire, Sword and Sorcery",
+    "author": "hrspks",
+    "version": 0.1,
+    "compatibility": {
+        "minimum": 11,
+        "verified": "11.315"
+    },
+    "esmodules": [
+        "fire-sword-and-sorcery.js"
+    ],
+    "styles": [
+        "fire-sword-and-sorcery.css"
+    ],
+    "packs": [
+    ],
+    "languages": [
+    ],
+    "gridDistance": 2,
+    "gridUnits": "m"
+
+}
