@@ -37,7 +37,7 @@
             "lvl": 1,
             "mrl": 8,
             "na": "1d8",
-            "na_lair": "3d10"
+            "nalair": "3d10"
         }
     },
     "Item": {
@@ -55,16 +55,19 @@
             "templates": [
                 "base"
             ],
-            "equip": {
-                "hand": true,
+            "equippable": {
+                "hand1": true,
+                "hand2": true,
                 "helmet": false,
                 "body": false,
                 "arms": false,
                 "gloves": false,
                 "legs": false,
                 "boots": false,
-                "belt": true
+                "belt1": true,
+                "belt2": true
             },
+            "equipped": false,
             "size": 1
         },
         "facet": {

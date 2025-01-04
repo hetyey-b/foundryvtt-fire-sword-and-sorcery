@@ -1,0 +1,17 @@
+.digitInput {
+    display: inline-block;
+    width: 25px !important;
+}
+
+.wideDigitInput {
+    display: inline-block;
+    width: 100px !important;
+}
+
+.leftPad {
+    padding-left: 25px;
+}
+
+.notesText {
+    height: 40vh;
+}

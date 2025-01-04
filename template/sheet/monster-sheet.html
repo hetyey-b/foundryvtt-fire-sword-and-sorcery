@@ -1,0 +1,33 @@
+
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    </header>
+
+    <hr/>
+
+    <label for="system.lvl">Level:</label>
+    <input class="digitInput" name="system.lvl" id="system.lvl" type="text" value="{{actor.system.lvl}}" data.dtype="Number"/>
+
+    <hr/>
+
+    <label for="system.mrl">Morale:</label>
+    <input class="digitInput" name="system.mrl" id="system.mrl" type="text" value="{{actor.system.mrl}}" data.dtype="Number"/>
+
+    <hr/>
+
+    <label for="system.ac">Armour:</label>
+    <input class="digitInput" name="system.ac" id="system.ac" type="text" value="{{actor.system.ac}}" data.dtype="Number"/>
+
+    <hr/>
+
+    <label for="system.na">Number Appearing:</label>
+    <input class="wideDigitInput" name="system.na" id="system.na" type="text" value="{{actor.system.na}}"/>
+
+    <hr/>
+
+    <label for="system.nalair">Number Appearing In Lair:</label>
+    <input class="wideDigitInput" name="system.nalair" id="system.nalair" type="text" value="{{actor.system.nalair}}"/>
+
+</form>

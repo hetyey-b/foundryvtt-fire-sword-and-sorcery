@@ -4,12 +4,4 @@
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
     <textarea name="system.description">{{item.system.description}}</textarea>
-    <select name="system.tier">
-        {{#select item.system.tier}}
-        {{#each config.facetTiers as |name type|}}
-        <option value="{{type}}">{{name}}</option>
-        {{/each}}
-        {{/select}}
-    </select
 </form>
-

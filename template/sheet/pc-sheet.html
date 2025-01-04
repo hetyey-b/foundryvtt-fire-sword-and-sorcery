@@ -6,12 +6,21 @@
     <hr/>
     <div>
         <label for="system.lvl">Level:</label>
-        <input name="system.lvl" id="system.lvl" type="text" value="{{actor.system.lvl}}" data.dtype="Number"/>
+        <input class="digitInput" name="system.lvl" id="system.lvl" type="text" value="{{actor.system.lvl}}" data.dtype="Number"/>
         
-        <label for="system.xp">XP:</label>
-        <input name="system.xp" id="system.xp" type="text" value="{{actor.system.xp}}" data.dtype="Number"/>
+        <label class="leftPad" for="system.xp">XP:</label>
+        <input class="wideDigitInput" name="system.xp" id="system.xp" type="text" value="{{actor.system.xp}}" data.dtype="Number"/>
+
+        <hr/>
+
+        <div class="item" data-item-id="{{actor.system.heritageAbility._id}}">
+            <a class="show-item"><b>{{actor.system.heritageAbility.name}}: </b></a>
+            <i>{{actor.system.heritageAbility.system.description}}</i>
+            <a class="item-delete"><i class="fas fa-trash"></i></a>
+        </div>
     </div>
     <hr/>
+
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="inventory">Inventory</a>
         <a class="item" data-tab="attributes">Attributes</a>
@@ -25,25 +34,33 @@
             <ul>
                 <li>
                     <label for="system.attributes.str">Strength:</label>
-                    <input name="system.attributes.str" id="system.attributes.str" type="text" value="{{actor.system.attributes.str}}" data-dtype="Number"/>
+                    <input class="digitInput" name="system.attributes.str" id="system.attributes.str" type="text" value="{{actor.system.attributes.str}}" data-dtype="Number"/>
+                    <a class="item-roll" data-rollAttribute="str"><i class="fas fa-dice"></i></a>
                 </li>
                 <li>
                     <label for="system.attributes.ref">Reflex:</label>
-                    <input name="system.attributes.ref" id="system.attributes.ref" type="text" value="{{actor.system.attributes.ref}}" data-dtype="Number"/>
+                    <input class="digitInput" name="system.attributes.ref" id="system.attributes.ref" type="text" value="{{actor.system.attributes.ref}}" data-dtype="Number"/>
+                    <a class="item-roll" data-rollAttribute="ref"><i class="fas fa-dice"></i></a>
                 </li>
                 <li>
                     <label for="system.attributes.int">Intelligence:</label>
-                    <input name="system.attributes.int" id="system.attributes.int" type="text" value="{{actor.system.attributes.int}}" data-dtype="Number"/>
+                    <input class="digitInput" name="system.attributes.int" id="system.attributes.int" type="text" value="{{actor.system.attributes.int}}" data-dtype="Number"/>
+                    <a class="item-roll" data-rollAttribute="int"><i class="fas fa-dice"></i></a>
                 </li>
                 <li>
                     <label for="system.attributes.wis">Wisdom:</label>
-                    <input name="system.attributes.wis" id="system.attributes.wis" type="text" value="{{actor.system.attributes.wis}}" data-dtype="Number"/>
+                    <input class="digitInput" name="system.attributes.wis" id="system.attributes.wis" type="text" value="{{actor.system.attributes.wis}}" data-dtype="Number"/>
+                    <a class="item-roll" data-rollAttribute="wis"><i class="fas fa-dice"></i></a>
                 </li>
             </ul>
         </div>
 
         {{!-- Inventory tab --}}
         <div class="tab" data-group="primary" data-tab="inventory">
+            <span style="{{actor.system.load.style}}">
+                Load: {{actor.system.load.value}} / 10   {{actor.system.load.warning}}
+            </span>
+            <hr/>
             <ul>
                 {{#each actor.system.equipment as |item id|}}
                 <div class="item" data-item-id="{{item._id}}">
@@ -61,7 +78,7 @@
             <ul>
                 {{#each actor.system.facets as |item id|}}
                 <div class="item" data-item-id="{{item._id}}">
-                    <a class="show-item"><b>{{item.name}} ({{item.tier}}) - </b></a>
+                    <a class="show-item"><b>{{item.name}} ({{item.system.tier}}) - </b></a>
                     <i>{{item.system.description}}</i>
                     <a class="item-delete"><i class="fas fa-trash"></i></a>
                 </div>
@@ -72,7 +89,7 @@
 
         {{!-- Notes tab --}}
         <div class="tab" data-group="primary" data-tab="notes" class="notes-tab-container">
-            Notes | Hello World!
+            <textarea class="notesText" name="system.notes">{{actor.system.notes}}</textarea>
         </div>
 
     </section>
