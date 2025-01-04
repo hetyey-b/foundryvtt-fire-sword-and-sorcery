@@ -1,0 +1,55 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+    <div>
+        <label for="system.size">Size: </label>
+        <input name="system.size" id="system.size" type="text" value="{{item.system.size}}" data-dtype="Number"/>
+        <hr/>
+        <h2>Equippable</h2>
+        <ul>
+            <li>
+                <label for="system.equip.hand">Hand: </label>
+                <input name="system.equip.hand" id="system.equip.hand" type="checkbox" {{checked item.system.equip.hand}} />
+            </li>
+
+            <li>
+                <label for="system.equip.helmet">Helmet: </label>
+                <input name="system.equip.helmet" id="system.equip.helmet" type="checkbox" {{checked item.system.equip.helmet}} />
+            </li>
+
+            <li>
+                <label for="system.equip.body">Body: </label>
+                <input name="system.equip.body" id="system.equip.body" type="checkbox" {{checked item.system.equip.body}} />
+            </li>
+
+            <li>
+                <label for="system.equip.arms">Arms: </label>
+                <input name="system.equip.arms" id="system.equip.arms" type="checkbox" {{checked item.system.equip.arms}} />
+            </li>
+
+            <li>
+                <label for="system.equip.gloves">Gloves: </label>
+                <input name="system.equip.gloves" id="system.equip.gloves" type="checkbox" {{checked item.system.equip.gloves}} />
+            </li>
+
+            <li>
+                <label for="system.equip.legs">Legs: </label>
+                <input name="system.equip.legs" id="system.equip.legs" type="checkbox" {{checked item.system.equip.legs}} />
+            </li>
+
+            <li>
+                <label for="system.equip.boots">Boots: </label>
+                <input name="system.equip.boots" id="system.equip.boots" type="checkbox" {{checked item.system.equip.boots}} />
+            </li>
+
+            <li>
+                <label for="system.equip.belt">Belt: </label>
+                <input name="system.equip.belt" id="system.equip.belt" type="checkbox" {{checked item.system.equip.belt}} />
+            </li>
+        </ul>
+    </div>
+    <textarea name="system.description">{{item.system.description}}</textarea>
+</form>
+

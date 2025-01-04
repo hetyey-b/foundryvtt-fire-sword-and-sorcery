@@ -1,0 +1,21 @@
+{
+    "fss": {
+        "pcSizes": {
+            "little": "Little",
+            "regular": "Regular",
+            "large": "Large"
+        },
+        "equipmentSheet": {
+            "equippable": "Equippable",
+            "hand": "Hand",
+            "helmet": "Helmet",
+            "body": "Body",
+            "arms": "Arms",
+            "gloves": "Gloves",
+            "legs": "Legs",
+            "boots": "Boots",
+            "belt": "Belt",
+            "size": "Size"
+        }
+    }
+}

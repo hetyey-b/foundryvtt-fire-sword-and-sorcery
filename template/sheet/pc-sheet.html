@@ -1,0 +1,80 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    </header>
+    <hr/>
+    <div>
+        <label for="system.lvl">Level:</label>
+        <input name="system.lvl" id="system.lvl" type="text" value="{{actor.system.lvl}}" data.dtype="Number"/>
+        
+        <label for="system.xp">XP:</label>
+        <input name="system.xp" id="system.xp" type="text" value="{{actor.system.xp}}" data.dtype="Number"/>
+    </div>
+    <hr/>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="inventory">Inventory</a>
+        <a class="item" data-tab="attributes">Attributes</a>
+        <a class="item" data-tab="facets">Facets</a>
+        <a class="item" data-tab="notes">Notes</a>
+    </nav>
+
+    <section class="sheet-body">
+        {{!-- Attributes Tab --}}
+        <div class="tab" data-group="primary" data-tab="attributes">
+            <ul>
+                <li>
+                    <label for="system.attributes.str">Strength:</label>
+                    <input name="system.attributes.str" id="system.attributes.str" type="text" value="{{actor.system.attributes.str}}" data-dtype="Number"/>
+                </li>
+                <li>
+                    <label for="system.attributes.ref">Reflex:</label>
+                    <input name="system.attributes.ref" id="system.attributes.ref" type="text" value="{{actor.system.attributes.ref}}" data-dtype="Number"/>
+                </li>
+                <li>
+                    <label for="system.attributes.int">Intelligence:</label>
+                    <input name="system.attributes.int" id="system.attributes.int" type="text" value="{{actor.system.attributes.int}}" data-dtype="Number"/>
+                </li>
+                <li>
+                    <label for="system.attributes.wis">Wisdom:</label>
+                    <input name="system.attributes.wis" id="system.attributes.wis" type="text" value="{{actor.system.attributes.wis}}" data-dtype="Number"/>
+                </li>
+            </ul>
+        </div>
+
+        {{!-- Inventory tab --}}
+        <div class="tab" data-group="primary" data-tab="inventory">
+            <ul>
+                {{#each actor.system.equipment as |item id|}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <a class="show-item"><b>{{item.name}} - Size: {{item.system.size}}</b></a>
+                    <i>{{item.system.description}}</i>
+                    <a class="item-delete"><i class="fas fa-trash"></i></a>
+                </div>
+                <hr/>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{!-- Facets tab --}}
+        <div class="tab" data-group="primary" data-tab="facets">
+            <ul>
+                {{#each actor.system.facets as |item id|}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <a class="show-item"><b>{{item.name}} ({{item.tier}}) - </b></a>
+                    <i>{{item.system.description}}</i>
+                    <a class="item-delete"><i class="fas fa-trash"></i></a>
+                </div>
+                <hr/>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{!-- Notes tab --}}
+        <div class="tab" data-group="primary" data-tab="notes" class="notes-tab-container">
+            Notes | Hello World!
+        </div>
+
+    </section>
+
+</form>

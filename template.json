@@ -1,8 +1,50 @@
 {
-    "Actor": {},
+    "Actor": {
+        "types": [
+            "pc",
+            "monster"
+        ],
+        "templates": {
+            "base": {
+                "description": "Lorem ipsum dolor sit amet"
+            },
+            "combat": {
+                "hp": 6,
+                "size": "regular"
+            }
+        },
+        "pc" : {
+            "templates": [
+                "base",
+                "combat"
+            ],
+            "notes": "",
+            "xp": 0,
+            "lvl": 1,
+            "attributes": {
+                "str": 0,
+                "ref": 0,
+                "int": 0,
+                "wis": 0
+            }
+        },
+        "monster":{
+            "templates": [
+                "base",
+                "combat"
+            ],
+            "ac": 11,
+            "lvl": 1,
+            "mrl": 8,
+            "na": "1d8",
+            "na_lair": "3d10"
+        }
+    },
     "Item": {
         "types": [
-            "equipment"
+            "equipment",
+            "facet",
+            "heritageAbility"
         ],
         "templates": {
             "base": {
@@ -24,6 +66,17 @@
                 "belt": true
             },
             "size": 1
+        },
+        "facet": {
+            "templates": [
+                "base"
+            ],
+            "tier": "1d4"
+        },
+        "heritageAbility" : {
+            "templates": [
+                "base"
+            ]
         }
     }
 }
