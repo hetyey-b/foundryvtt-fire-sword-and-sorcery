@@ -99,7 +99,8 @@
                 "belt2": true
             },
             "armourValue": 0,
-            "size": 1
+            "size": 1,
+            "coin": 5
         },
         "facet": {
             "templates": [

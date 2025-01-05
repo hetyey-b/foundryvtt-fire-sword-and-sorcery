@@ -22,6 +22,11 @@
 
     <hr/>
 
+    <label for="system.hp">HP:</label>
+    <input class="digitInput" name="system.hp" id="system.hp" type="text" value="{{actor.system.hp}}" data.dtype="Number"/>
+
+    <hr/>
+
     <label for="system.na">Number Appearing:</label>
     <input class="wideDigitInput" name="system.na" id="system.na" type="text" value="{{actor.system.na}}"/>
 
@@ -29,5 +34,9 @@
 
     <label for="system.nalair">Number Appearing In Lair:</label>
     <input class="wideDigitInput" name="system.nalair" id="system.nalair" type="text" value="{{actor.system.nalair}}"/>
+    
+    <hr/>
+
+    <textarea name="system.description">{{actor.system.description}}</textarea>
 
 </form>

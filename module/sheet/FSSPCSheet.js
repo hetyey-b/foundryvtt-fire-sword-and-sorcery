@@ -68,12 +68,101 @@ export default class FSSPCSheet extends ActorSheet {
         html.find(".roll-armour").click(this._onRollArmour.bind(this));
         html.find(".magic-add-element").click(this._onMagicAddElement.bind(this));
         html.find(".component-pouch-reset").click(this._onComponentPouchReset.bind(this));
+        html.find(".cast-magic").click(this._onCastMagic.bind(this));
 
         super.activateListeners(html);
     }
 
-    async _onComponentPouchReset(event) {
+    async _onComponentPouchReset() {
         await this.actor.update({"system.magic.componentPouchTracker": 6});
+    }
+
+    async _onCastMagic() {
+        let speaker = ChatMessage.getSpeaker();
+        let template = "systems/foundryvtt-fire-sword-and-sorcery/template/chat/spell-chat.html";
+
+        const method = this.actor.system.magic.method;
+
+        const range = ([
+            "Touch: Anything in Engagement range to you (that you can see)",
+            "Reach: Anything in the same Zone as you (that you can see)",
+            "Near: Anything in a neighboring Zone (that you can see)",
+            "Far: Anything you can see"
+        ])[parseInt(this.actor.system.magic.range)];
+
+        const area = ([
+            "Tiny: Affects a small  item, something that can be held in two hands",
+            "Individual: Affects a single creature",
+            "Group: Affects creatures in Engagement range to each other",
+            "Room: Affects everything in a Zone"
+        ])[parseInt(this.actor.system.magic.area)];
+
+        const dmghp = ([
+            "1 DMG/HP",
+            "1d4 DMG/HP",
+            "1d6 DMG/HP",
+            "1d8 DMG/HP"
+        ])[parseInt(this.actor.system.magic.dmghp)];
+
+
+        const level = this.actor.system.magic.usedMagicLevel;
+        const elements = Object.keys(this.actor.system.magic.elements).map(e => {
+            if (this.actor.system.magic.elements[e] > 0) {
+                return `${e}: ${this.actor.system.magic.elements[e]}`;
+            }
+            return false;
+        }).filter(e => e).join(', ');
+
+        let miscast = "";
+        if (parseInt(this.actor.system.lvl) < level) {
+            miscast = `Chance of Miscast! Roll INTELLIGENCE vs ${10 + (level - parseInt(this.actor.system.lvl))}`;
+        }
+        
+        let resultData = {
+            method,
+            range,
+            area,
+            dmghp,
+            level,
+            elements,
+            miscast
+        };
+
+        if (level === 0) {
+            console.log("FSS | Can't cast spell of level 0");
+            return;
+        }
+
+        if (level > this.actor.system.magic.maxMagicLevel) {
+            console.log(`FSS | Trying to cast spell of level ${level} (max level is ${this.actor.system.magic.maxLevel})`);
+            return;
+        }
+
+        let result = await renderTemplate(template, resultData);
+
+        let messageData = {
+            speaker: speaker,
+            content: result,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+        }
+        CONFIG.ChatMessage.documentClass.create(messageData, {})
+
+        await this.actor.update({"system.magic.elements.fire": 0});
+        await this.actor.update({"system.magic.elements.air": 0});
+        await this.actor.update({"system.magic.elements.water": 0});
+        await this.actor.update({"system.magic.elements.earth": 0});
+        await this.actor.update({"system.magic.elements.steam": 0});
+        await this.actor.update({"system.magic.elements.metal": 0});
+        await this.actor.update({"system.magic.elements.lightning": 0});
+        await this.actor.update({"system.magic.elements.nature": 0});
+        await this.actor.update({"system.magic.elements.frost": 0});
+        await this.actor.update({"system.magic.elements.sand": 0});
+
+        await this.actor.update({"system.magic.method": "evocation"});
+        await this.actor.update({"system.magic.range": 0});
+        await this.actor.update({"system.magic.area": 0});
+        await this.actor.update({"system.magic.dmghp": 0});
+        await this.actor.update({"system.magic.usedMagicLevel": 0});
     }
 
     async _onMagicAddElement(event) {
@@ -84,7 +173,7 @@ export default class FSSPCSheet extends ActorSheet {
             return;
         }
 
-        const actorUpdateKey = "system.magic.elements." + magicElement;
+        let actorUpdateKey = "system.magic.elements." + magicElement;
         await this.actor.update({[actorUpdateKey]: this.actor.system.magic.elements[magicElement] + 1});
         await this.actor.update({"system.magic.componentPouchTracker": this.actor.system.magic.componentPouchTracker - 1});
 
@@ -116,10 +205,10 @@ export default class FSSPCSheet extends ActorSheet {
         elementsToCheck.forEach(async e => {
             const elementCount = this.actor.system.magic.elements[e];
             if (elementCount > 0) {
-                let actorUpdateKey = "system.magic.elements." + magicElement;
-                await this.actor.update({[actorUpdateKey]: this.actor.system.magic.elements[magicElement] - 1});
                 actorUpdateKey = "system.magic.elements." + e;
                 await this.actor.update({[actorUpdateKey]: this.actor.system.magic.elements[e] - 1});
+                actorUpdateKey = "system.magic.elements." + magicElement;
+                await this.actor.update({[actorUpdateKey]: this.actor.system.magic.elements[magicElement] - 1});
 
                 const secondaryElement = secondaryElementDict[e][magicElement];
                 actorUpdateKey = "system.magic.elements." + secondaryElement;
