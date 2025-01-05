@@ -1,9 +1,9 @@
 export const fss = {};
 
 fss.pcSizes  =  {
-    little: "fss.pcSizes.little",
-    regular: "fss.pcSizes.regular",
-    large: "fss.pcSizes.large"
+    little: "Little",
+    regular: "Regular",
+    large: "Large"
 }
 fss.facetTiers = {
     4: "1d4",

@@ -65,7 +65,8 @@
                 "method": "evocation",
                 "range": 0,
                 "area": 0,
-                "dmghp": 0
+                "dmghp": 0,
+                "size": "regular"
             }
         },
         "monster":{
