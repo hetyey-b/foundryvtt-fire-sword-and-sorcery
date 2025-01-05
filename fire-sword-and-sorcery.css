@@ -15,3 +15,47 @@
 .notesText {
     height: 40vh;
 }
+
+.leftBorder {
+    border-left: 2px solid black; 
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+.rightBorder {
+    border-right: 2px solid black;
+    padding-right: 5px;
+    margin-right: 5px;
+} 
+
+.equippedItem {
+    display: inline-block;
+}
+
+.magic-tab-elements {
+    display: flex;
+    align-items: flex-start;
+}
+
+.magic-tab-element {
+  display: inline-block; /* Ensures blocks behave as inline blocks */
+  width: 48%; /* Adjust width as needed */
+  margin-right: 2%; /* Space between blocks */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  vertical-align: top; /* Backup for alignment in other contexts */
+}
+
+.magic-tab-element:last-child {
+  margin-right: 0; /* Remove margin for the last block */
+}
+
+.magic-selector {
+    display: block;
+}
+.magic-selector > select {
+    width: 500px;
+}
+.cast-magic {
+    font-size: 2em;
+    margin: 0 auto;
+}

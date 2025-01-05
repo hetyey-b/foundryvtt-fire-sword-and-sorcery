@@ -26,6 +26,37 @@
                 "ref": 0,
                 "int": 0,
                 "wis": 0
+            },
+            "equipped": {
+                "hand1": false,
+                "hand2": false,
+                "helmet": false,
+                "body": false,
+                "arms": false,
+                "gloves": false,
+                "legs": false,
+                "boots": false,
+                "belt1": false,
+                "belt2": false
+            },
+            "magic": {
+                "elements": {
+                    "fire": 0,
+                    "air": 0,
+                    "water": 0,
+                    "earth": 0,
+                    "steam": 0,
+                    "metal": 0,
+                    "lightning": 0,
+                    "nature": 0,
+                    "frost": 0,
+                    "sand": 0
+                },
+                "method": "evocation",
+                "range": 0,
+                "area": 0,
+                "dmghp": 0,
+                "componentPouchTracker": 6
             }
         },
         "monster":{
@@ -67,7 +98,7 @@
                 "belt1": true,
                 "belt2": true
             },
-            "equipped": false,
+            "armourValue": 0,
             "size": 1
         },
         "facet": {

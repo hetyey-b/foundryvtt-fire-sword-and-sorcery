@@ -11,6 +11,9 @@
         <label class="leftPad" for="system.xp">XP:</label>
         <input class="wideDigitInput" name="system.xp" id="system.xp" type="text" value="{{actor.system.xp}}" data.dtype="Number"/>
 
+        <label class="leftPad" for="system.armourValue">Armour Points:</label>
+        <a class="roll-armour" data-armourValue="{{actor.system.armourValue}}">+{{actor.system.armourValue}}</a>
+
         <hr/>
 
         <div class="item" data-item-id="{{actor.system.heritageAbility._id}}">
@@ -25,6 +28,7 @@
         <a class="item" data-tab="inventory">Inventory</a>
         <a class="item" data-tab="attributes">Attributes</a>
         <a class="item" data-tab="facets">Facets</a>
+        <a class="item" data-tab="magic">Elemental Magic</a>
         <a class="item" data-tab="notes">Notes</a>
     </nav>
 
@@ -61,11 +65,93 @@
                 Load: {{actor.system.load.value}} / 10   {{actor.system.load.warning}}
             </span>
             <hr/>
+                <ul>
+                    <li>
+                        <b>Right Hand:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.hand1._id}}">
+                        <a class="show-item">{{actor.system.equipped.hand1.name}}</a>
+                        <a class="item-unequip" data-equipSlot="hand1"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Left Hand:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.hand2._id}}">
+                        <a class="show-item">{{actor.system.equipped.hand2.name}}</a>
+                        <a class="item-unequip" data-equipSlot="hand2"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Helmet:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.helmet._id}}">
+                        <a class="show-item">{{actor.system.equipped.helmet.name}}</a>
+                        <a class="item-unequip" data-equipSlot="helmet"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Body:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.body._id}}">
+                        <a class="show-item">{{actor.system.equipped.body.name}}</a>
+                        <a class="item-unequip" data-equipSlot="body"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Arms:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.arms._id}}">
+                        <a class="show-item">{{actor.system.equipped.arms.name}}</a>
+                        <a class="item-unequip" data-equipSlot="arms"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Gloves:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.gloves._id}}">
+                        <a class="show-item">{{actor.system.equipped.gloves.name}}</a>
+                        <a class="item-unequip" data-equipSlot="gloves"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Legs:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.legs._id}}">
+                        <a class="show-item">{{actor.system.equipped.legs.name}}</a>
+                        <a class="item-unequip" data-equipSlot="legs"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Boots:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.boots._id}}">
+                        <a class="show-item">{{actor.system.equipped.boots.name}}</a>
+                        <a class="item-unequip" data-equipSlot="boots"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Belt 1:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.belt1._id}}">
+                        <a class="show-item">{{actor.system.equipped.belt1.name}}</a>
+                        <a class="item-unequip" data-equipSlot="belt1"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <b>Belt 2:</b>
+                        <div class="item equippedItem" data-item-id="{{actor.system.equipped.belt2._id}}">
+                        <a class="show-item">{{actor.system.equipped.belt2.name}}</a>
+                        <a class="item-unequip" data-equipSlot="belt2"><i class="fas fa-chain-broken"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            <hr/>
             <ul>
-                {{#each actor.system.equipment as |item id|}}
+                {{#each actor.system.inventory as |item id|}}
                 <div class="item" data-item-id="{{item._id}}">
                     <a class="show-item"><b>{{item.name}} - Size: {{item.system.size}}</b></a>
-                    <i>{{item.system.description}}</i>
+                    <a class="equip-item leftBorder" data-equipSlot="hand1">Right hand</a>
+                    <a class="equip-item leftBorder" data-equipSlot="hand2">Left hand</a>
+                    <a class="equip-item leftBorder" data-equipSlot="helmet">Helmet</a>
+                    <a class="equip-item leftBorder" data-equipSlot="body">Body</a>
+                    <a class="equip-item leftBorder" data-equipSlot="arms">Arms</a>
+                    <a class="equip-item leftBorder" data-equipSlot="gloves">Gloves</a>
+                    <a class="equip-item leftBorder" data-equipSlot="legs">Legs</a>
+                    <a class="equip-item leftBorder" data-equipSlot="boots">Boots</a>
+                    <a class="equip-item leftBorder" data-equipSlot="belt1">Belt 1</a>
+                    <a class="equip-item leftBorder rightBorder" data-equipSlot="belt2">Belt 2</a>
                     <a class="item-delete"><i class="fas fa-trash"></i></a>
                 </div>
                 <hr/>
@@ -85,6 +171,118 @@
                 <hr/>
                 {{/each}}
             </ul>
+        </div>
+
+        {{!-- Magic tab --}}
+        <div class="tab magic-tab-container" data-group="primary" data-tab="magic">
+            <a class="component-pouch-reset">
+                Components left in current pouch: {{actor.system.magic.componentPouchTracker}} / 6
+            </a>
+            <hr/>
+            <i>
+                <p>
+                    Every round, you can add up to {{actor.system.attributes.int}} (INTELLIGENCE) components to the spell you are concentrating on
+                </p>
+            </i>
+            <hr/>
+            <div class="magic-tab-elements">
+                <div class="magic-tab-element">
+                    <h2>Primary Elements</h2>
+                    <ul>
+                        <li>
+                            <a class="magic-add-element" data-element="air">
+                                <b>Air: </b>{{actor.system.magic.elements.air}}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="magic-add-element" data-element="earth">
+                                <b>Earth: </b>{{actor.system.magic.elements.earth}}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="magic-add-element" data-element="fire">
+                                <b>Fire: </b>{{actor.system.magic.elements.fire}}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="magic-add-element" data-element="water">
+                                <b>Water: </b>{{actor.system.magic.elements.water}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="magic-tab-element">
+                    <h2>Secondary Elements</h2>
+                    <ul>
+                        <li>
+                            <b>Frost: </b>{{actor.system.magic.elements.frost}}
+                        </li>
+                        <li>
+                            <b>Lightning: </b>{{actor.system.magic.elements.lightning}}
+                        </li>
+                        <li>
+                            <b>Metal: </b>{{actor.system.magic.elements.metal}}
+                        </li>
+                        <li>
+                            <b>Nature: </b>{{actor.system.magic.elements.nature}}
+                        </li>
+                        <li>
+                            <b>Sand: </b>{{actor.system.magic.elements.sand}}
+                        </li>
+                        <li>
+                            <b>Steam: </b>{{actor.system.magic.elements.steam}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <div class="magic-selector">
+                    <label for="system.magic.method">Method: </label>
+                    <select name="system.magic.method">
+                        {{#select actor.system.magic.method}}
+                        <option value="evocation">Evocation</option>
+                        <option value="enchantment">Enchancement</option>
+                        <option value="conjuration">Conjuration</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="magic-selector">
+                    <label for="system.magic.range">Range: </label>
+                    <select name="system.magic.range">
+                        {{#select actor.system.magic.range}}
+                        <option value="0">0 - Touch: Anything in Engagement range to you (that you can see)</option>
+                        <option value="1">1 - Reach: Anything in the same Zone as you (that you can see)</option>
+                        <option value="2">2 - Near: Anything in a neighboring Zone (that you can see)</option>
+                        <option value="3">3 - Far: Anything you can see</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="magic-selector">
+                    <label for="system.magic.area">Area: </label>
+                    <select name="system.magic.area">
+                        {{#select actor.system.magic.area}}
+                        <option value="0">0 - Tiny: Affects a small  item, something that can be held in two hands</option>
+                        <option value="1">1 - Individual: Affects a single creature</option>
+                        <option value="2">2 - Group: Affects creatures in Engagement range to each other</option>
+                        <option value="3">3 - Room: Affects everything in a Zone</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="magic-selector">
+                    <label for="system.magic.dmghp">DMG or HP: </label>
+                    <select name="system.magic.dmghp">
+                        {{#select actor.system.magic.dmghp}}
+                        <option value="0">0 - 1 DMG/HP</option>
+                        <option value="1">1 - 1d4 DMG/HP</option>
+                        <option value="2">2 - 1d6 DMG/HP</option>
+                        <option value="3">3 - 1d8 DMG/HP</option>
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+            <hr/>
+            <a class="cast-magic">Cast spell (Level: {{actor.system.magic.usedMagicLevel}}/{{actor.system.magic.maxMagicLevel}})</a>
         </div>
 
         {{!-- Notes tab --}}
