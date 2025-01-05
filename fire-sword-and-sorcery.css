@@ -1,6 +1,10 @@
+.totalCoinSpan {
+    margin-left: 30px;
+}
+
 .digitInput {
     display: inline-block;
-    width: 25px !important;
+    width: 30px !important;
 }
 
 .wideDigitInput {
@@ -13,7 +17,7 @@
 }
 
 .notesText {
-    height: 40vh;
+    height: 40vh !important;
 }
 
 .leftBorder {

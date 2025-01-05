@@ -2,7 +2,8 @@
     "Actor": {
         "types": [
             "pc",
-            "monster"
+            "monster",
+            "hireling"
         ],
         "templates": {
             "base": {
@@ -12,6 +13,15 @@
                 "hp": 6,
                 "size": "regular"
             }
+        },
+        "hireling":{
+            "templates": [
+                "base"
+            ],
+            "hp": 6,
+            "maxHP": 6,
+            "maxLoad": 10,
+            "cost": 30
         },
         "pc" : {
             "templates": [
@@ -55,8 +65,7 @@
                 "method": "evocation",
                 "range": 0,
                 "area": 0,
-                "dmghp": 0,
-                "componentPouchTracker": 6
+                "dmghp": 0
             }
         },
         "monster":{
@@ -100,7 +109,8 @@
             },
             "armourValue": 0,
             "size": 1,
-            "coin": 5
+            "number": 1,
+            "maxStackSize": 1
         },
         "facet": {
             "templates": [

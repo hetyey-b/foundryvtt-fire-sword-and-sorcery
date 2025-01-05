@@ -11,8 +11,13 @@
         <label class="leftPad" for="system.xp">XP:</label>
         <input class="wideDigitInput" name="system.xp" id="system.xp" type="text" value="{{actor.system.xp}}" data.dtype="Number"/>
 
+        <label class="leftPad" for="system.hp">HP:</label>
+        <input class="wideDigitInput" name="system.hp" id="system.hp" type="text" value="{{actor.system.hp}}" data.dtype="Number"/> / {{actor.system.maxHP}}
+
         <label class="leftPad" for="system.armourValue">Armour Points:</label>
         <a class="roll-armour" data-armourValue="{{actor.system.armourValue}}">+{{actor.system.armourValue}}</a>
+
+        <span class="totalCoinSpan">Total Coin: {{actor.system.totalCoin}}c</span>
 
         <hr/>
 
@@ -69,71 +74,81 @@
                     <li>
                         <b>Right Hand:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.hand1._id}}">
-                        <a class="show-item">{{actor.system.equipped.hand1.name}}</a>
-                        <a class="item-unequip" data-equipSlot="hand1"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.hand1.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.hand1.name}}</a>
+                            <a class="item-unequip" data-equipSlot="hand1"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Left Hand:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.hand2._id}}">
-                        <a class="show-item">{{actor.system.equipped.hand2.name}}</a>
-                        <a class="item-unequip" data-equipSlot="hand2"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.hand2.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.hand2.name}}</a>
+                            <a class="item-unequip" data-equipSlot="hand2"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Helmet:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.helmet._id}}">
-                        <a class="show-item">{{actor.system.equipped.helmet.name}}</a>
-                        <a class="item-unequip" data-equipSlot="helmet"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.helmet.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.helmet.name}}</a>
+                            <a class="item-unequip" data-equipSlot="helmet"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Body:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.body._id}}">
-                        <a class="show-item">{{actor.system.equipped.body.name}}</a>
-                        <a class="item-unequip" data-equipSlot="body"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.body.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.body.name}}</a>
+                            <a class="item-unequip" data-equipSlot="body"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Arms:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.arms._id}}">
-                        <a class="show-item">{{actor.system.equipped.arms.name}}</a>
-                        <a class="item-unequip" data-equipSlot="arms"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.arms.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.arms.name}}</a>
+                            <a class="item-unequip" data-equipSlot="arms"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Gloves:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.gloves._id}}">
-                        <a class="show-item">{{actor.system.equipped.gloves.name}}</a>
-                        <a class="item-unequip" data-equipSlot="gloves"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.gloves.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.gloves.name}}</a>
+                            <a class="item-unequip" data-equipSlot="gloves"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Legs:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.legs._id}}">
-                        <a class="show-item">{{actor.system.equipped.legs.name}}</a>
-                        <a class="item-unequip" data-equipSlot="legs"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.legs.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.legs.name}}</a>
+                            <a class="item-unequip" data-equipSlot="legs"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Boots:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.boots._id}}">
-                        <a class="show-item">{{actor.system.equipped.boots.name}}</a>
-                        <a class="item-unequip" data-equipSlot="boots"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.boots.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.boots.name}}</a>
+                            <a class="item-unequip" data-equipSlot="boots"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Belt 1:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.belt1._id}}">
-                        <a class="show-item">{{actor.system.equipped.belt1.name}}</a>
-                        <a class="item-unequip" data-equipSlot="belt1"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.belt1.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.belt1.name}}</a>
+                            <a class="item-unequip" data-equipSlot="belt1"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                     <li>
                         <b>Belt 2:</b>
                         <div class="item equippedItem" data-item-id="{{actor.system.equipped.belt2._id}}">
-                        <a class="show-item">{{actor.system.equipped.belt2.name}}</a>
-                        <a class="item-unequip" data-equipSlot="belt2"><i class="fas fa-chain-broken"></i></a>
+                            <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{actor.system.equipped.belt2.system.number}}"/>
+                            <a class="show-item">{{actor.system.equipped.belt2.name}}</a>
+                            <a class="item-unequip" data-equipSlot="belt2"><i class="fas fa-chain-broken"></i></a>
                         </div>
                     </li>
                 </ul>
@@ -141,6 +156,7 @@
             <ul>
                 {{#each actor.system.inventory as |item id|}}
                 <div class="item" data-item-id="{{item._id}}">
+                    <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{item.system.number}}"/>
                     <a class="show-item"><b>{{item.name}} - Size: {{item.system.size}}</b></a>
                     <a class="equip-item leftBorder" data-equipSlot="hand1">Right hand</a>
                     <a class="equip-item leftBorder" data-equipSlot="hand2">Left hand</a>
@@ -175,13 +191,10 @@
 
         {{!-- Magic tab --}}
         <div class="tab magic-tab-container" data-group="primary" data-tab="magic">
-            <a class="component-pouch-reset">
-                Components left in current pouch: {{actor.system.magic.componentPouchTracker}} / 6
-            </a>
-            <hr/>
             <i>
                 <p>
-                    Every round, you can add up to {{actor.system.attributes.int}} (INTELLIGENCE) components to the spell you are concentrating on
+                    Every round, you can add up to {{actor.system.attributes.int}} (INTELLIGENCE) components to the spell you are concentrating on. 
+                    Remove the same number of components from a Component Pouch you are holding in your hand.
                 </p>
             </i>
             <hr/>

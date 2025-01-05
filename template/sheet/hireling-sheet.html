@@ -1,0 +1,59 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    </header>
+    <label for="system.hp">HP: </label>
+    <input class="digitInput" name="system.hp" id="system.hp" type="text" value="{{actor.system.hp}}" data-dtype="Number"/>
+    /
+    <input class="digitInput" name="system.maxHP" id="system.maxHP" type="text" value="{{actor.system.maxHP}}" data-dtype="Number"/>
+    <hr/>
+    <label for="system.maxLoad">Maximum Load: </label>
+    <input class="digitInput" name="system.maxLoad" id="system.maxLoad" type="text" value="{{actor.system.maxLoad}}" data-dtype="Number"/>
+    <hr/>
+    <label for="system.cost">Cost: </label>
+    <input class="digitInput" name="system.cost" id="system.cost" type="text" value="{{actor.system.cost}}" data-dtype="Number"/> c
+    <hr/>
+    <span class="totalCoinSpan">Total Coin: {{actor.system.totalCoin}}c</span>
+    <hr/>
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="inventory">Inventory</a>
+        <a class="item" data-tab="description">Description</a>
+    </nav>
+
+    <section class="sheet-body">
+        {{!-- Inventory tab --}}
+        <div class="tab" data-group="primary" data-tab="inventory">
+            <span style="{{actor.system.load.style}}">
+                Load: {{actor.system.load.value}} / 10   {{actor.system.load.warning}}
+            </span>
+            <hr/>
+            <ul>
+                {{#each actor.system.inventory as |item id|}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{item.system.number}}"/>
+                    <a class="show-item"><b>{{item.name}} - Size: {{item.system.size}}</b></a>
+                    <a class="equip-item leftBorder" data-equipSlot="hand1">Right hand</a>
+                    <a class="equip-item leftBorder" data-equipSlot="hand2">Left hand</a>
+                    <a class="equip-item leftBorder" data-equipSlot="helmet">Helmet</a>
+                    <a class="equip-item leftBorder" data-equipSlot="body">Body</a>
+                    <a class="equip-item leftBorder" data-equipSlot="arms">Arms</a>
+                    <a class="equip-item leftBorder" data-equipSlot="gloves">Gloves</a>
+                    <a class="equip-item leftBorder" data-equipSlot="legs">Legs</a>
+                    <a class="equip-item leftBorder" data-equipSlot="boots">Boots</a>
+                    <a class="equip-item leftBorder" data-equipSlot="belt1">Belt 1</a>
+                    <a class="equip-item leftBorder rightBorder" data-equipSlot="belt2">Belt 2</a>
+                    <a class="item-delete"><i class="fas fa-trash"></i></a>
+                </div>
+                <hr/>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{!-- Description tab --}}
+        <div class="tab" data-group="primary" data-tab="description" class="description-tab-container">
+            <textarea class="notesText" name="system.description">{{actor.system.description}}</textarea>
+        </div>
+    </section>
+</form>
+

@@ -17,6 +17,23 @@ export default class FSSPCSheet extends ActorSheet {
         const actorEquippedItems = actorItems.filter(a => Object.values(a)[0]);
         const actorEquippedItemIds = actorEquippedItems.map(a => Object.values(a)[0]._id);
 
+        Object.keys(data.actor.system.equipped).forEach(key => {
+            if (data.actor.system.equipped[key]) {
+                data.actor.system.equipped[key].system.displayName = data.actor.system.equipped[key].name;
+                if (data.actor.system.equipped[key].system.number > 1) {
+                    data.actor.system.equipped[key].system.displayName = ` (${data.actor.system.equipped[key].system.number})`;
+                }
+            }
+        });
+
+        data.actor.system.maxHP = parseInt(data.actor.system.lvl) + 5;
+
+        data.actor.system.totalCoin = data.items.filter(item => {
+            return item.name === "Coin";
+        }).reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.system.number;
+        }, 0);
+
         data.actor.system.equippeditems = data.items.filter(item => {
             return item.type === "equipment" && actorEquippedItemIds.includes(item._id);
         });
@@ -24,7 +41,6 @@ export default class FSSPCSheet extends ActorSheet {
         data.actor.system.inventory = data.items.filter(item => {
             return item.type === "equipment" && !actorEquippedItemIds.includes(item._id);
         });
-
         data.actor.system.armourValue = data.actor.system.equippeditems.reduce((accumulator,currentValue) => {
             return accumulator + currentValue.system.armourValue;
         }, 0);
@@ -67,14 +83,34 @@ export default class FSSPCSheet extends ActorSheet {
         html.find(".equip-item").click(this._onEquipItem.bind(this));
         html.find(".roll-armour").click(this._onRollArmour.bind(this));
         html.find(".magic-add-element").click(this._onMagicAddElement.bind(this));
-        html.find(".component-pouch-reset").click(this._onComponentPouchReset.bind(this));
         html.find(".cast-magic").click(this._onCastMagic.bind(this));
+        html.find(".inline-edit").change(this._onInlineEdit.bind(this));
 
         super.activateListeners(html);
     }
 
-    async _onComponentPouchReset() {
-        await this.actor.update({"system.magic.componentPouchTracker": 6});
+    async _onInlineEdit(event) {
+        event.preventDefault();
+        const element = $(event.currentTarget).parents(".item");
+
+        if (!element.data("itemId")) {
+            return;
+        }
+
+        const item = this.actor.items.get(element.data("itemId"));
+        const field = event.currentTarget.dataset.field;
+
+        let newValue = parseInt(event.currentTarget.value);
+        if (item.system.maxStackSize < parseInt(event.currentTarget.value)) {
+            newValue = item.system.maxStackSize;                
+            event.currentTarget.value = item.system.maxStackSize;
+        }
+        if (parseInt(event.currentTarget.value) <= 0) {
+            newValue = 1;
+            event.currentTarget.value = 1;
+        }
+
+        return item.update({[field]: newValue});
     }
 
     async _onCastMagic() {
@@ -169,13 +205,8 @@ export default class FSSPCSheet extends ActorSheet {
         const element = event.currentTarget;
         const magicElement = element.dataset.element;
 
-        if (this.actor.system.magic.componentPouchTracker <= 0) {
-            return;
-        }
-
         let actorUpdateKey = "system.magic.elements." + magicElement;
         await this.actor.update({[actorUpdateKey]: this.actor.system.magic.elements[magicElement] + 1});
-        await this.actor.update({"system.magic.componentPouchTracker": this.actor.system.magic.componentPouchTracker - 1});
 
         // check for different primary elements and combine
         const secondaryElementDict = {
