@@ -77,8 +77,8 @@ export default class FSSPCSheet extends ActorSheet {
 
     activateListeners(html) {
         html.find(".item-delete").click(this._onItemDelete.bind(this));
-        html.find(".item-roll").click(this._onItemRoll.bind(this));
         html.find(".item-unequip").click(this._onItemUnequip.bind(this));
+        html.find(".item-roll").click(this._onItemRoll.bind(this));
         html.find(".show-item").click(this._onShowItem.bind(this));
         html.find(".equip-item").click(this._onEquipItem.bind(this));
         html.find(".roll-armour").click(this._onRollArmour.bind(this));
@@ -127,8 +127,8 @@ export default class FSSPCSheet extends ActorSheet {
         ])[parseInt(this.actor.system.magic.range)];
 
         const area = ([
-            "Tiny: Affects a small  item, something that can be held in two hands",
-            "Individual: Affects a single creature",
+            "Tiny: Affects a single small item, something that can be held in two hands",
+            "Individual: Affects a single creature or multiple small items",
             "Group: Affects creatures in Engagement range to each other",
             "Room: Affects everything in a Zone"
         ])[parseInt(this.actor.system.magic.area)];
@@ -404,8 +404,9 @@ export default class FSSPCSheet extends ActorSheet {
                     label: "Roll",
                     callback: async (html) => {
                         const facetValue = html.find('[name=facet]')[0].value;
-                        const rollFormula = `1d20 + @facetValue + @attributeValue`;
+                        const rollFormula = `1d20 + 1d@facetValue + @attributeValue`;
 
+                        debugger;
                         const rollData = {
                             facetValue: facetValue,
                             attributeValue: attributeValue

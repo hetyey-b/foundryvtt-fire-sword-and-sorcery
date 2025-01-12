@@ -25,7 +25,7 @@
         {{!-- Inventory tab --}}
         <div class="tab" data-group="primary" data-tab="inventory">
             <span style="{{actor.system.load.style}}">
-                Load: {{actor.system.load.value}} / 10   {{actor.system.load.warning}}
+                Load: {{actor.system.load.value}} / {{actor.system.maxLoad}}   {{actor.system.load.warning}}
             </span>
             <hr/>
             <ul>
@@ -33,16 +33,6 @@
                 <div class="item" data-item-id="{{item._id}}">
                     <input class="digitInput inline-edit" data-field="system.number" type="text" value="{{item.system.number}}"/>
                     <a class="show-item"><b>{{item.name}} - Size: {{item.system.size}}</b></a>
-                    <a class="equip-item leftBorder" data-equipSlot="hand1">Right hand</a>
-                    <a class="equip-item leftBorder" data-equipSlot="hand2">Left hand</a>
-                    <a class="equip-item leftBorder" data-equipSlot="helmet">Helmet</a>
-                    <a class="equip-item leftBorder" data-equipSlot="body">Body</a>
-                    <a class="equip-item leftBorder" data-equipSlot="arms">Arms</a>
-                    <a class="equip-item leftBorder" data-equipSlot="gloves">Gloves</a>
-                    <a class="equip-item leftBorder" data-equipSlot="legs">Legs</a>
-                    <a class="equip-item leftBorder" data-equipSlot="boots">Boots</a>
-                    <a class="equip-item leftBorder" data-equipSlot="belt1">Belt 1</a>
-                    <a class="equip-item leftBorder rightBorder" data-equipSlot="belt2">Belt 2</a>
                     <a class="item-delete"><i class="fas fa-trash"></i></a>
                 </div>
                 <hr/>
