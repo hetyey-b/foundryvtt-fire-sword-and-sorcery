@@ -23,6 +23,23 @@ export default class FSSHirelingSheet extends ActorSheet {
             return accumulator + currentValue.system.number;
         }, 0);
 
+        data.actor.system.supplies = {};
+        data.actor.system.supplies.common = data.items.filter(item => {
+            return item.name === "Common Supply";
+        }).reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.system.number;
+        }, 0);
+        data.actor.system.supplies.uncommon = data.items.filter(item => {
+            return item.name === "Uncommon Supply";
+        }).reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.system.number;
+        }, 0);
+        data.actor.system.supplies.rare = data.items.filter(item => {
+            return item.name === "Rare Supply";
+        }).reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.system.number;
+        }, 0);
+
         data.actor.system.load = {};
         data.actor.system.load.value = data.items.filter(item => item.type === "equipment").reduce((accumulator, currentValue) => {
             return accumulator + currentValue.system.size;

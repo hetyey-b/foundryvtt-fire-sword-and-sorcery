@@ -15,7 +15,11 @@
     <input class="digitInput" name="system.cost" id="system.cost" type="text" value="{{actor.system.cost}}" data-dtype="Number"/> c
     <hr/>
     <span class="totalCoinSpan">Total Coin: {{actor.system.totalCoin}}c</span>
-    <hr/>
+    <ul>
+        <li>Total Common Supplies: {{actor.system.supplies.common}}</li>
+        <li>Total Uncommon Supplies: {{actor.system.supplies.uncommon}}</li>
+        <li>Total Rare Supplies: {{actor.system.supplies.rare}}</li>
+    </ul>
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="inventory">Inventory</a>
         <a class="item" data-tab="description">Description</a>
